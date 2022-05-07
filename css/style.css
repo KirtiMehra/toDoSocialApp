@@ -1,0 +1,32 @@
+.options {
+  display: flex;
+  gap: 5px;
+
+}
+
+.col-md-5, .col-md-7{
+    margin-top: 3em;
+
+}
+h2{
+    font-size: 35px;
+    color: #230d1e;
+}
+textarea{
+    background-color: #CCF3EE;
+}
+
+.btn-warning{
+    font-weight: 600;
+}
+
+.btn{
+    font-weight: 600;
+}
+
+.postData{
+    font-size: 20px;
+    font-weight:400;
+    color: black;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+}

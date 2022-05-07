@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+ 
+  <style>
+    body{
+      background-color:#97C4B8;
+      color: white;
+    }
+    h2{
+      text-align: center;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+      <h2 class=" mt-2" >SOCIAL MEDIA APP &#9989;</h2>
+      <div class="container">
+      
+          <div class="row">
+           
+            <div class="col-md-5">
+              <form id="form">
+              <label class="text-dark" style="font-size: 25px; font-weight: 600;">Write Your Post Here</label><br>
+              <textarea class="form-control" id="input" cols="30" rows="10"></textarea><br>
+              <div id="msg"> </div>
+              <button id="submit" class="btn btn-right btn-warning">Post</button>
+            </form>
+            </div>
+         
+            <div class="col-md-7">
+              <h2>Your Posts are Here</h2>
+              <div id="post">
+               
+               </div>
+            </div>
+          </div>
+      </div>
+      <script>
+        let form = document.getElementById("form");
+        let submit = document.getElementById("submit");
+        let input = document.getElementById("input");
+        let msg = document.getElementById("msg");
+        let post = document.getElementById("post");
+        form.addEventListener("submit", (e) =>{
+          e.preventDefault();
+         formValidation();
+      
+        });
+
+        const formValidation =(e) =>{
+          if(input.value === ""){
+            console.log("Failed");
+            alert("Validation is Failed");
+            msg.innerHTML = "Please add some Task";
+            msg.style.color = "red";
+            msg.classList.add("alert");
+            msg.classList.add("alert-danger");
+            
+          }else{
+            // alert("Validation is Success");
+            dataAccept();
+            createPost();
+        
+        }
+        }  
+
+      let data = {};
+
+      const dataAccept = ()=>{
+        data['text'] = input.value;
+        console.log(data);
+      }
+
+      let createPost = () =>{
+        post.innerHTML += ` <div class="post1 mb-2 mt-2 "> <span class="postData"> ${data['text']}</span>
+                  <span class="options">
+                   <button  onclick="editPost(this)" class="">&#9998;</button> 
+                   <button onclick="deletePost(this)" class=""> &#10006</button> 
+                  </span>
+                  </div>`;
+        
+      input.innerHtml = "";
+      };
+
+      let deletePost = (e) =>{
+       e.parentElement.parentElement.remove();
+       input.value = "";
+      }
+
+      let editPost = (e) =>{
+        input.value = e.parentElement.previousElementSibling.innerHTML;
+        e.parentElement.parentElement.remove();
+      }
+    </script>
+</body>
+</html>
+
